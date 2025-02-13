@@ -7,7 +7,6 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./sanity/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/**/*.{html,js}",
   ],
   theme: {
     extend: {
