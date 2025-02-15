@@ -1,6 +1,6 @@
 import SearchForm from "@/components/SearchForm";
 import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { STARTUPS_QUERY } from "@/sanity/lib/queries";
 import { formatDate } from "@/utils";
 
@@ -10,8 +10,8 @@ interface Params {
 export default async function Home({ searchParams }: Params) {
   const query = (await searchParams).query;
 
-  const posts: StartupTypeCard[] = await client.fetch(STARTUPS_QUERY);
-  const formattedPosts = posts.map((post) => ({
+  const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY });
+  const formattedPosts = posts.map((post: StartupTypeCard) => ({
     ...post,
     _createdAt: formatDate(post._createdAt),
   }));
@@ -45,6 +45,8 @@ export default async function Home({ searchParams }: Params) {
           )}
         </ul>
       </section>
+
+      <SanityLive />
     </>
   );
 }
