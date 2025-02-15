@@ -1,7 +1,6 @@
 import Form from "next/form";
 import { Search } from "lucide-react";
 import SearchFormReset from "./SearchFormReset";
-import { Button } from "./ui/button";
 
 interface Props {
   query?: string;
