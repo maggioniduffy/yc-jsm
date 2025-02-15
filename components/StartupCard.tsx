@@ -24,6 +24,7 @@ const StartupCard = ({ post }: Props) => {
     image,
   } = post;
 
+  console.log(_id);
   return (
     <li className="startup-card group">
       <div className="flex-between">

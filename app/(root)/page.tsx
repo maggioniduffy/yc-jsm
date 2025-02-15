@@ -7,10 +7,14 @@ import { formatDate } from "@/utils";
 interface Params {
   searchParams: Promise<{ query?: string }>;
 }
+
 export default async function Home({ searchParams }: Params) {
   const query = (await searchParams).query;
+  const params = {
+    search: query || null,
+  };
 
-  const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY });
+  const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY, params });
   const formattedPosts = posts.map((post: StartupTypeCard) => ({
     ...post,
     _createdAt: formatDate(post._createdAt),
@@ -26,7 +30,7 @@ export default async function Home({ searchParams }: Params) {
         </h1>
         <p className="sub-heading !max-w-3xl">
           {" "}
-          Submit Ideas, Vot on Pitches, and Get Noticed in Virtual Competitions
+          Submit Ideas, Vote on Pitches, and Get Noticed in Virtual Competitions
         </p>
         <SearchForm query={query} />
       </section>
