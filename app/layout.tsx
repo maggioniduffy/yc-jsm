@@ -52,7 +52,10 @@ const workSans = localFont({
 export const metadata: Metadata = {
   title: "YC Directorty",
   description: "Created by maggioniduffy - JSM Course",
-  icons: "/favicon.ico", //
+  icons: [
+    { rel: "icon", url: "/favicon.ico" },
+    { rel: "apple-touch-icon", url: "/favicon.ico" },
+  ],
 };
 
 export default function RootLayout({
