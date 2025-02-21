@@ -8,11 +8,15 @@ interface Props {
 }
 
 function formatNumber(count: number): string {
-  if (count <= 1) {
-    return `${count} view`;
+  if (count) {
+    if (count <= 1) {
+      return `${count} view`;
+    }
+
+    return `${count} views`;
   }
 
-  return `${count} views`;
+  return "";
 }
 
 const View = async ({ id }: Props) => {
