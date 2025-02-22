@@ -51,7 +51,7 @@ const workSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "YC Directorty",
+  title: "YC Directory",
   description: "Created by maggioniduffy - JSM Course",
   icons: [
     { rel: "icon", url: "/favicon.ico" },
