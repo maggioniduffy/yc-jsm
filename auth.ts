@@ -4,7 +4,7 @@ import { client } from "@/sanity/lib/client";
 import { writeClient } from "@/sanity/lib/write-client";
 import NextAuth from "next-auth";
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
+export const authOptons = {
   providers: [GitHub],
   callbacks: {
     async signIn({ user: { name, email, image }, profile }: any) {
@@ -46,4 +46,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return session;
     },
   },
-});
+};
+
+export const { handlers, auth, signIn, signOut } = NextAuth(authOptons);
