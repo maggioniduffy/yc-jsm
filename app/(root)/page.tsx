@@ -24,7 +24,8 @@ export default async function Home({ searchParams }: Params) {
     ...post,
     _createdAt: formatDate(post._createdAt),
   }));
-  console.log(JSON.stringify(posts, null, 2));
+  console.log("POSTS");
+  console.log(JSON.stringify(posts[0].author, null, 2));
 
   return (
     <>
