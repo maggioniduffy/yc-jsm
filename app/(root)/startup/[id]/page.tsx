@@ -22,7 +22,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;
 
   //Parallel requests
-  const [post, { select: editorPosts }] = await Promise.all([
+  const [post, playlist] = await Promise.all([
     client.fetch(STARTUP_BY_ID_QUERY, { id }),
     client.fetch(PLAYLIST_BY_SLUG_QUERY, {
       slug: "editor-picks",
@@ -31,6 +31,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   if (!post) return notFound();
 
+  const editorPosts = playlist?.select ?? [];
   const parsedContent = md.render(post?.pitch || "");
 
   return (
@@ -39,7 +40,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <p className="tag">{formatDate(post?._createdAt)}</p>
 
         <h1 className="heading">{post.title}</h1>
-        <p className="sub-heading !max-w-5xl">{post.description}</p>
+        <p className="sub-heading !max-w-full">{post.description}</p>
       </section>
 
       <section className="section_container">
